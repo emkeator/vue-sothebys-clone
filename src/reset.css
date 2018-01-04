@@ -27,6 +27,7 @@ time, mark, audio, video {
 
 html {
   box-sizing: border-box;
+  background-color: red;
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -58,4 +59,9 @@ table {
 
 .vsc-controller {
 	display: none;
+}
+
+body {
+	margin: 0;
+	padding: 0;
 }
