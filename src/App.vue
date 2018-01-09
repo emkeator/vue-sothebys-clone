@@ -35,7 +35,7 @@
         </a>
       </div>
       <div class="footerRight">
-        <img src="./assets/Magnifying_glass_icon.svg.png"/><input type="text" v-model="searchText" placeholder="Quick Search...">
+        <img src="./assets/Magnifying_glass_icon.svg.png" id="magGlass"/><input type="text" v-model="searchText" placeholder="Quick Search...">
         <button @click="search">Search</button>
       </div>
     </div>
