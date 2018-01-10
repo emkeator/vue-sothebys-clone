@@ -9,7 +9,7 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/vue-sothebys-clone',
     proxyTable: {},
 
     // Various Dev Server settings
