@@ -2,9 +2,7 @@
   <div class="Home">
     <section class="fullscreen-bg">
         <video loop muted autoplay class="fullscreen-bg-video">
-           <!-- <source src="./../assets/summitSothebysTrimmed.mp4" type="video/mp4">  -->
             <source src="./../assets/clipped.mp4" type="video/mp4" id="video">  
-            <!-- <source src="https://emkeator.github.io/vue-sothebys-clone/docs/static/media/clipped.8cf50ab.mp4" type="video/mp4" id="video">   -->
         </video>
     </section>
     <img src="./../assets/Summit-Sothebys-Logo.png"/>
