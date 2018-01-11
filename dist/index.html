@@ -1,66 +1,175 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>vue-sothebys-clone</title><style type=text/css>/* http://meyerweb.com/eric/tools/css/reset/
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset=utf-8>
+  <meta name=viewport content="width=device-width,initial-scale=1">
+  <title>vue-sothebys-clone</title>
+  <style type=text/css>
+    /* http://meyerweb.com/eric/tools/css/reset/
         v2.0 | 20110126
         License: none (public domain)
       */
 
-      html, body, div, span, applet, object, iframe,
-      h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-      a, abbr, acronym, address, big, cite, code,
-      del, dfn, em, img, ins, kbd, q, s, samp,
-      small, strike, strong, sub, sup, tt, var,
-      b, u, i, center,
-      dl, dt, dd, ol, ul, li,
-      fieldset, form, label, legend,
-      table, caption, tbody, tfoot, thead, tr, th, td,
-      article, aside, canvas, details, embed,
-      figure, figcaption, footer, header, hgroup,
-      menu, nav, output, ruby, section, summary,
-      time, mark, audio, video {
-        margin: 0;
-        padding: 0;
-        border: 0;
-        font-size: 100%;
-        font: inherit;
-        vertical-align: baseline;
-        font-family: -apple-system,BlinkMacSystemFont,“Segoe UI”,Roboto,Oxygen-Sans,Ubuntu,Cantarell,“Helvetica Neue”,sans-serif;
-      }
+    html,
+    body,
+    div,
+    span,
+    applet,
+    object,
+    iframe,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    a,
+    abbr,
+    acronym,
+    address,
+    big,
+    cite,
+    code,
+    del,
+    dfn,
+    em,
+    img,
+    ins,
+    kbd,
+    q,
+    s,
+    samp,
+    small,
+    strike,
+    strong,
+    sub,
+    sup,
+    tt,
+    var,
+    b,
+    u,
+    i,
+    center,
+    dl,
+    dt,
+    dd,
+    ol,
+    ul,
+    li,
+    fieldset,
+    form,
+    label,
+    legend,
+    table,
+    caption,
+    tbody,
+    tfoot,
+    thead,
+    tr,
+    th,
+    td,
+    article,
+    aside,
+    canvas,
+    details,
+    embed,
+    figure,
+    figcaption,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    output,
+    ruby,
+    section,
+    summary,
+    time,
+    mark,
+    audio,
+    video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+      font-family: -apple-system, BlinkMacSystemFont, “Segoe UI”, Roboto, Oxygen-Sans, Ubuntu, Cantarell, “Helvetica Neue”, sans-serif;
+    }
 
-      html {
-        box-sizing: border-box;
-      }
-      *, *:before, *:after {
-        box-sizing: inherit;
-      }
+    html {
+      box-sizing: border-box;
+    }
 
-      /* HTML5 display-role reset for older browsers */
-      article, aside, details, figcaption, figure,
-      footer, header, hgroup, menu, nav, section {
-        display: block;
-      }
-      body {
-        line-height: 1;
-      }
-      ol, ul {
-        list-style: none;
-      }
-      blockquote, q {
-        quotes: none;
-      }
-      blockquote:before, blockquote:after,
-      q:before, q:after {
-        content: '';
-        content: none;
-      }
-      table {
-        border-collapse: collapse;
-        border-spacing: 0;
-      }
+    *,
+    *:before,
+    *:after {
+      box-sizing: inherit;
+    }
+    /* HTML5 display-role reset for older browsers */
 
-      .vsc-controller {
-        display: none;
-      }
+    article,
+    aside,
+    details,
+    figcaption,
+    figure,
+    footer,
+    header,
+    hgroup,
+    menu,
+    nav,
+    section {
+      display: block;
+    }
 
-      body {
-        margin: 0;
-        padding: 0;
-      }</style><link href=/static/css/app.21f224a7dce3d738575619d76affb822.css rel=stylesheet></head><body><div id=app></div><link href=dist/static/css/app.21f224a7dce3d738575619d76affb822.css rel=stylesheet><script type=text/javascript src=dist/static/js/manifest.1081f2966d22de401552.js></script><script type=text/javascript src=dist/static/js/vendor.17d770379dd0b1b3199f.js></script><script type=text/javascript src=dist/static/js/app.f8f075e4b368c38d7856.js></script><script type=text/javascript src=/static/js/manifest.1081f2966d22de401552.js></script><script type=text/javascript src=/static/js/vendor.17d770379dd0b1b3199f.js></script><script type=text/javascript src=/static/js/app.f8f075e4b368c38d7856.js></script></body></html>
+    body {
+      line-height: 1;
+    }
+
+    ol,
+    ul {
+      list-style: none;
+    }
+
+    blockquote,
+    q {
+      quotes: none;
+    }
+
+    blockquote:before,
+    blockquote:after,
+    q:before,
+    q:after {
+      content: '';
+      content: none;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    .vsc-controller {
+      display: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <link href=/static/css/app.4131a4526e91097e1e29d8d00fb83278.css rel=stylesheet>
+</head>
+
+<body>
+  <div id=app></div>
+  <script type=text/javascript src=/static/js/manifest.fd2b165b82290b05a009.js></script>
+  <script type=text/javascript src=/static/js/vendor.17d770379dd0b1b3199f.js></script>
+  <script type=text/javascript src=/static/js/app.6412add8d9a5cd2f3aa3.js></script>
+</body>
+
+</html>

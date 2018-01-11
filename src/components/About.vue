@@ -6,7 +6,9 @@
     <section class="central">
         <img :src="logo">
         <div class="aboutContainer">
-            This is a clone, albeit an altered one, of the Summit Sotheby's International Realty site. It was made with Vue.js.
+            <p>This is a clone, albeit an altered one, of the Summit Sotheby's International Realty site.</p>
+            <p>It was made with Vue.js.</p>
+            <p>The real Summit Sotheby's site can be found <a href="http://www.summitsothebysrealty.com/eng" target="_blank">here</a>.</p>
         </div>
     </section>
     <section class="flankingImg">
@@ -69,12 +71,28 @@ export default {
         width: 60vw;
         margin: 0 auto;
         display: flex;
-        flex-wrap: wrap;
+        /* flex-wrap: wrap;  */
+        flex-direction: column;
         justify-content: center;
+        align-items: center;
         overflow: scroll; 
-        padding: 100px;
         margin-bottom: 30px;
+        line-height: 1.2em;
 
+    }
+
+    .aboutContainer p {
+        width: 300px;
+        margin-bottom: 20px;
+    }
+
+    .aboutContainer a {
+        text-decoration: none;
+        color: #363636;
+    }
+    .aboutContainer a:hover {
+        text-decoration: none;
+        color: #072956;
     }
 
 </style>

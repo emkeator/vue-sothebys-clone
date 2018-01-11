@@ -8,7 +8,6 @@
         <div class="searchDiv">
             <img src="../assets/Magnifying_glass_icon.svg.png"/>
             <input v-model="searchText" placeholder="Search..." class="largeInput">
-            <!-- $<input v-model="priceSearch" placeholder="Max Price..." class="medInput"> -->
             Price: <select v-model="priceSearch">
                 <option disabled value="">Max Price...</option>
                 <option value="500000">$500,000</option>
@@ -65,13 +64,11 @@
                 <option value="14">14+</option>
                 <option value="15">15+</option>
             </select>
-            <!-- <input v-model="bedSearch" placeholder="Beds.." class="smallInput">+
-            <input v-model="bathSearch" placeholder="Baths..." class="smallInput">+ -->
         </div>
         <div class="PropertiesContainer">
-            <div @click="alertMe" v-for="property in filteredProperties" v-bind:key="property.name" class="property">
-                <img :src="property.img" :alt="property.name"/>
-                <div class="info">
+            <div v-for="property in filteredProperties" v-bind:key="property.name" class="property">
+                <img :src="property.img" :alt="property.name" @click="property.show = !property.show"/>
+                <div class="info" v-if="property.show" @click="property.show = !property.show">
                     <h1>{{ property.name }}</h1>
                     <h2>${{ property.price }}</h2>
                     <div>
@@ -104,12 +101,13 @@ export default {
       properties: [
             {
                 name: "4343 E WEBER CANYON Road",
-                img: "https://imagescdn-gabriels-net.akamaized.net/reno/imagereader.aspx?idlisting=280-l-2014-1480050&imageurl=http%3A//assets.utahrealestate.com/photos/640x480/1480050_3bdb9b8f4b128acb13752c6ce070674b_1092923.jpg&option=N&w=1024",
+                img: "http://www.mountainliving.com/images/cache/cache_2/cache_7/cache_7/sunsetranchext_0-4469c772.jpeg",
                 association: "Summit Sotheby's International Reality",
                 price: 3000000,
                 beds: 8,
                 address: "4343 E WEBER CANYON Road Oakley, Utah 84055",
                 baths: 8,
+                show: false                
             },
             {
                 name: "3853 E Rockport Ridge",
@@ -118,7 +116,8 @@ export default {
                 price: 25000000,
                 address: "3853 E Rockport Ridge Park City, Utah 84098",
                 beds: 7,
-                baths: 6
+                baths: 6,
+                show: false                
             },
             {
                 name: "1943 N Wolf Creek Ranch Rd",
@@ -127,7 +126,8 @@ export default {
                 address: "1943 N Wolf Creek Ranch Rd Woodland, Utah 84036",
                 price: 35000000,
                 beds: 5,
-                baths: 7
+                baths: 7,
+                show: false                
             },
             {
                 img: "https://imagescdn-gabriels-net.akamaized.net/reno/imagereader.aspx?idlisting=280-l-916-qycw9e&imageurl=http%3A//m.sothebysrealty.com/1103i215/3yj0878ngraemv6e7fysfqtdc6i215&option=N&w=1024",
@@ -136,16 +136,18 @@ export default {
                 address: "69 White Pine Canyon St. Lot 75 Park City, Utah 84060",
                 beds: 4,
                 baths: 6,
-                price: 15000000
+                price: 15000000,
+                show: false                
             },
             {
                 name: "5798 E HEBER CANYON Road",
-                img: "https://imagescdn-gabriels-net.akamaized.net/reno/imagereader.aspx?idlisting=280-l-2014-1480050&imageurl=http%3A//assets.utahrealestate.com/photos/640x480/1480050_3bdb9b8f4b128acb13752c6ce070674b_1092923.jpg&option=N&w=1024",
+                img: "http://www.mountainliving.com/images/cache/cache_2/cache_7/cache_7/sunsetranchext_0-4469c772.jpeg",
                 association: "Summit Sotheby's International Reality",
                 price: 7000000,
                 beds: 15,
                 address: "5798 E HEBER CANYON Road Oakley, Utah 84055",
                 baths: 20,
+                show: false                
             },
             {
                 name: "7978 E Red Rock Ridge",
@@ -154,7 +156,8 @@ export default {
                 price: 39000000,
                 address: "7978 E Red Rock Ridge Park City, Utah 84098",
                 beds: 7,
-                baths: 6
+                baths: 6,
+                show: false                
             },
             {
                 name: "1549 N Wolf Moon Ln",
@@ -163,7 +166,8 @@ export default {
                 address: "1549 N Wolf Moon Ln Park City, Utah 84036",
                 price: 15000000,
                 beds: 4,
-                baths: 6.5
+                baths: 6.5,
+                show: false                
             },
             {
                 img: "https://imagescdn-gabriels-net.akamaized.net/reno/imagereader.aspx?idlisting=280-l-916-qycw9e&imageurl=http%3A//m.sothebysrealty.com/1103i215/3yj0878ngraemv6e7fysfqtdc6i215&option=N&w=1024",
@@ -172,7 +176,8 @@ export default {
                 address: "139 Westwen Pine Ridge St. Park City, Utah 84060",
                 beds: 4,
                 baths: 6,
-                price: 20000000
+                price: 20000000,
+                show: false
             }
         ]
     };
@@ -254,8 +259,9 @@ export default {
     }
 
     .property {
-        width: 50vw;
-        height: 180px;
+        height: 176px;
+        width: 200px;
+        padding: 10px;
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -265,12 +271,18 @@ export default {
         -moz-box-shadow: 0px 0px 5px 3px rgba(193,220,255,1);
         box-shadow: 0px 0px 5px 3px rgba(193,220,255,1);
         cursor: pointer;
+        position: relative;
     }
     .info {
-        text-align: left;
+        text-align: center;
+        position: absolute;
+        background-color: rgba(54, 54, 54, 0.65);
+        width: 180px;
+        height: 156px;
+        padding-top: 7px;
     }
     .info h1 {
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: bold;
         margin-bottom: 10px; 
     }
@@ -291,9 +303,8 @@ export default {
     }
     
     .property img {
-        width: 150px;
-        height: 130px;
-        margin: 0 15px; 
+        width: 180px;
+        height: 156px;
     }
 
     .searchDiv {
@@ -343,6 +354,19 @@ export default {
     .smallSelect {
         width: 40px;
     }
+
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+
 </style>
 
 // http://www.pepperdesignblog.com/wp-content/uploads/2013/02/PinterestChallenge_Winter2013_FireplaceLogScreen_logs_1000.jpg
