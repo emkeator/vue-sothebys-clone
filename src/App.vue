@@ -10,7 +10,9 @@
       </nav>
       
     </header>
-    <router-view/>
+    <transition :name="transitionName" mode="out-in">
+      <router-view/>
+    </transition>
     <div class="footer">
       <div class="footerLeft">
         <span @click="login">Log In or Sign Up</span>
@@ -47,7 +49,8 @@ export default {
   name: 'app',
   data() {
     return {
-      searchText:''
+      searchText:'',
+      transitionName: 'fade'
     }
   },
   methods: {
@@ -56,6 +59,7 @@ export default {
     },
     search: function(){
       alert(`Sorry - this is just a practice site. Unfortunately, you can't search for '${this.searchText}' on this site. But the real Summit Sotheby's International Realty Site can be found here: http://www.summitsothebysrealty.com/eng`)
+      this.searchText = ''
     },
     login: function(){
       alert(`Sorry - this is just a practice site. Unfortunately, you can't login on this site. But the real Summit Sotheby's International Realty Site can be found here: http://www.summitsothebysrealty.com/eng`)      
@@ -199,5 +203,13 @@ export default {
 
 .navHeader a:hover {
   font-weight: bold;
+}
+
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

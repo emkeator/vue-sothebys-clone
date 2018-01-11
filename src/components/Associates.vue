@@ -6,16 +6,19 @@
     <section class="central">
         <img :src="logo">
         <div class="associatesContainer">
-            <div @click="alertMe" v-for="associate in associates" v-bind:key="associate.name" class="associate">
+            <div v-for="associate in associates" v-bind:key="associate.name" @click="associate.show = !associate.show" class="associate">
                 <img :src="associate.img" :alt="associate.name"/>
-                <div class="info">
-                    <h1>{{ associate.name | uppercase }}</h1>
-                    <h2>{{ associate.association }}</h2>
-                    <h3>Phone: {{ associate.phone1}}</h3>
-                    <h3>Phone: {{ associate.phone2}}</h3>
-                    <p class="first">{{ associate.address1 }}</p>
-                    <p>{{ associate.address2 }}</p>
-                </div>
+                <transition name="slide-fade" mode="out-in">
+                    <h1 v-if="!associate.show" class="associate-name">{{ associate.name | uppercase }}</h1>
+                    <div class="info" v-if="associate.show">
+                        <h1>{{ associate.name | uppercase }}</h1>
+                        <h2>{{ associate.association }}</h2>
+                        <h3>Phone: {{ associate.phone1}}</h3>
+                        <h3>Phone: {{ associate.phone2}}</h3>
+                        <p class="first">{{ associate.address1 }}</p>
+                        <p>{{ associate.address2 }}</p>
+                    </div>
+                </transition>
             </div>
         </div>
     </section>
@@ -42,6 +45,7 @@ export default {
                 phone2: "+1 800.641.1884",
                 address1: "625 Main Street",
                 address2: "PO Box 2370 Park City, Utah 84060",
+                show: false
             },
             {
                 name: "Page Juliano",
@@ -51,6 +55,7 @@ export default {
                 phone2: "+1 800.641.1884",
                 address1: "625 Main Street",
                 address2: "PO Box 2370 Park City, Utah 84060",
+                show: false
             },
             {
                 name: "Mary Leader",
@@ -60,6 +65,7 @@ export default {
                 phone2: "+1 800.641.1884",
                 address1: "625 Main Street",
                 address2: "PO Box 2370 Park City, Utah 84060",
+                show: false
             },
             {
                 name: "Bill Ligety",
@@ -69,6 +75,7 @@ export default {
                 phone2: "+1 800.641.1884",
                 address1: "625 Main Street",
                 address2: "PO Box 2370 Park City, Utah 84060",
+                show: false
             },
             {
                 name: "Valen Lindner",
@@ -78,6 +85,7 @@ export default {
                 phone2: "+1 800.641.1884",
                 address1: "625 Main Street",
                 address2: "PO Box 2370 Park City, Utah 84060",
+                show: false
             },
             {
                 name: "William Winstead",
@@ -87,6 +95,7 @@ export default {
                 phone2: "+1 800.641.1884",
                 address1: "625 Main Street",
                 address2: "PO Box 2370 Park City, Utah 84060",
+                show: false
             } 
         ]
     };
@@ -158,6 +167,18 @@ export default {
         box-shadow: 0px 0px 5px 3px rgba(193,220,255,1);
         cursor:pointer;
     }
+    .associate-name{
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin: 10px 0;
+        text-align: center;
+        width: calc(100% - (130px));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
     .info {
         text-align: left;
     }
@@ -189,6 +210,18 @@ export default {
         margin: 10px;
         /* display: inline; */
         /* height: auto; */
+    }
+
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-leave-active {
+        transition: all .3s ease;
+    }
+    .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active below version 2.1.8 */ {
+        transform: translateX(10px);
+        opacity: 0;
     }
 </style>
 
